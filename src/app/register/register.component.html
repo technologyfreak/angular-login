@@ -1,0 +1,24 @@
+<div *ngIf="afAuth.user | async as user; else showRegistration">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <p>You are already logged in!</p>
+    <button routerLink="/tasks/{{afAuth.auth.currentUser.email}}">Go to your list</button>
+</div>
+<ng-template #showRegistration>
+    <div class="shadow border bg-light rounded bg-secondary m-5 p-5">
+        <div class="form-group">
+            <h1>Register</h1>
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                placeholder="example@somedomain.com" #email (keyup.enter)="register(email.value, password.value)">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" #password
+                (keyup.enter)="register(email.value, password.value)">
+        </div>
+        <button class="btn btn-primary" (click)="register(email.value, password.value)">Register</button>
+        <div class="float-right"><span class="text-warning" *ngIf="registrationError"> {{registrationError}} </span>
+            Already have an account? <a routerLink="/login" routerLinkActive="active">Click here to sign in!</a>
+        </div>
+    </div>
+</ng-template>

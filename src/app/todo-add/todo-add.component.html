@@ -1,0 +1,19 @@
+<div class="shadow border bg-light rounded bg-secondary m-5 p-5">
+    <input type="text" class="form-control" [(ngModel)]="value" name="value" (keyup.enter)="addTask()">
+    <span class="input-group-btn">
+        <button class="btn btn-success mx-1" (click)="addTask()">Add</button>
+    </span>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Todo List</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="container" *ngFor="let task of tasks | async;">
+            <td><a routerLink="/tasks/{{afAuth.auth.currentUser.email}}/{{task.id}}">{{task.value}}</a></td>
+        </tr>
+    </tbody>
+</table>

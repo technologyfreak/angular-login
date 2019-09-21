@@ -1,0 +1,10 @@
+<div class="shadow border bg-light rounded bg-secondary m-5 p-5">
+    <input type="text" class="form-control" [(ngModel)]="value" name="value">
+    <button class="btn btn-primary mx-1" (click)="updateTask()">update</button>
+    <button class="btn btn-danger mx-1" (click)="deleteTask()">delete</button>
+</div>
+<div class="m-3 p-3">
+    <button class="btn btn-warning" (click)="redirect()">cancel</button>
+</div>
+
+<router-outlet></router-outlet>
